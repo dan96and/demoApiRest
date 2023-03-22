@@ -43,13 +43,13 @@ public class ProductController {
 
     @Operation(summary = "Add a product")
     @PostMapping(value = "/products")
-    public ResponseEntity<Product> addProduct(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO productDTO) {
 
         Product product = convertToEntity(productDTO);
 
-        Product productAdd = productService.addProduct(product);
+        productService.addProduct(product);
 
-        return new ResponseEntity<>(productAdd, HttpStatus.OK);
+        return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
     @Operation(summary = "Modify the name of a product by the id")
